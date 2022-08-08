@@ -7,7 +7,7 @@ This Double Sphere model can work well and generate not only RGB image, but the 
 Based on Paper [The Double Sphere Camera Model](https://vision.in.tum.de/research/vslam/double-sphere)
 
 
-Double Sphere Shader is heavily borrowed from https://github.com/psiorx/Unity-Fisheye, but this whole project can not work fine when I'm actually using.
+Double Sphere Shader is heavily borrowed from https://github.com/psiorx/Unity-Fisheye, but [psiorx's whole project](https://github.com/psiorx/Unity-Fisheye) can not work fine when I'm actually using.
 
 # Usage
 
