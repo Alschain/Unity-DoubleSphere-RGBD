@@ -35,7 +35,7 @@ Render result stored in `TargetTexture` in the root GameObject.
 The simple result of RGB image is shown blow.
 ![RGB](./PICS/RGB.jpg)
 
-The simple result of depth image is shown blow.
+The simple result of depth image is shown blow. For display purpose, I multiply depth with 0.1 in shader when screenshot, and the code in this project is the actual depth which you might see whole white.
 ![Depth](./PICS/depth.jpg)
 
 # License

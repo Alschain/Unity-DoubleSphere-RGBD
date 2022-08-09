@@ -37,7 +37,7 @@ Shader "Custom/CubemapDepth"
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				return float4(abs(i.vertexView.z), abs(i.vertexView.z), abs(i.vertexView.z), abs(i.vertexView.z));
+				return float4(abs(i.vertexView.x), abs(i.vertexView.y), abs(i.vertexView.z), abs(i.vertexView.z));
 			}
 			ENDCG
 		}
