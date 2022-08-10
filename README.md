@@ -24,7 +24,7 @@ The double sphere camera model contains params: `fx, fy, resolution, alpha` and 
 
 By clicking `Generate`, you can find the double sphere camera prefab in current dictionary.
 
-## Data format
+## Data Format
 
 The repo first uses a project pass to fetch the depth cubemap, and use a standard shader for getting RGB cubemap.
 

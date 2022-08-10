@@ -11,7 +11,7 @@ public class DoubleSphere : MonoBehaviour {
 	void Start()
 	{
 		cubemap = this.transform.GetChild(0).gameObject.AddComponent<RenderCubemap>();
-		cubemap.Initialize(template);
+		cubemap.Initialize();
 		GetComponent<Camera>().targetTexture = new RenderTexture(template.resolution, template.resolution, 32, RenderTextureFormat.ARGBFloat);
 	}
 

@@ -103,19 +103,19 @@ Shader "Custom/DoubleSphere"
                     float3 fisheye_ray_l = (mz_l * chi + sqrt(mz_l * mz_l + (1 - chi * chi) * r2_l)) / (mz_l * mz_l + r2_l) * float3(mx_l, my, mz_l) - float3(0, 0, chi);
                     float3 fisheye_ray_r = (mz_r * chi + sqrt(mz_r * mz_r + (1 - chi * chi) * r2_r)) / (mz_r * mz_r + r2_r) * float3(mx_r, my, mz_r) - float3(0, 0, chi);
 
-                    float4 rgba = texCUBE(_ColorCube, mul((float3x3)unity_CameraToWorld, normalize(fisheye_ray)));
+                    float4 rgba = texCUBE(_ColorCube, normalize(fisheye_ray));
 
-                    float4 depth_l = texCUBE(_DepthCube, mul((float3x3)unity_CameraToWorld, normalize(fisheye_ray_l)));
-                    float4 depth_r = texCUBE(_DepthCube, mul((float3x3)unity_CameraToWorld, normalize(fisheye_ray_r)));
+                    float4 depth_l = texCUBE(_DepthCube, normalize(fisheye_ray_l));
+                    float4 depth_r = texCUBE(_DepthCube, normalize(fisheye_ray_r));
 
-                    float3 actray = mul((float3x3)unity_CameraToWorld, normalize(fisheye_ray_l));
+                    float3 actray = normalize(fisheye_ray_l);
 
                     actray = abs(actray);
                     if (actray.x >= actray.y && actray.x >= actray.z) {rgba.a = depth_l.r;}
                     if (actray.y >= actray.x && actray.y >= actray.z) {rgba.a = depth_l.g;}
                     if (actray.z >= actray.x && actray.z >= actray.y) {rgba.a = depth_l.b;}
 
-                    actray = mul((float3x3)unity_CameraToWorld, normalize(fisheye_ray_r));
+                    actray = normalize(fisheye_ray_r);
 
                     actray = abs(actray);
                     if (actray.x >= actray.y && actray.x >= actray.z) {rgba.a = (rgba.a + depth_r.r) / 2.0;}
@@ -144,9 +144,9 @@ Shader "Custom/DoubleSphere"
 
                 float3 fisheye_ray = (mz * chi + sqrt(mz * mz + (1 - chi * chi) * r2)) / (mz * mz + r2) * float3(mx, my, mz) - float3(0, 0, chi);
 
-                float3 actray = mul((float3x3)unity_CameraToWorld, normalize(fisheye_ray));
-                float4 rgba = texCUBE(_ColorCube, mul((float3x3)unity_CameraToWorld, normalize(fisheye_ray)));
-                float4 depth = texCUBE(_DepthCube, mul((float3x3)unity_CameraToWorld, normalize(fisheye_ray)));
+                float3 actray =normalize(fisheye_ray);
+                float4 rgba = texCUBE(_ColorCube, actray);
+                float4 depth = texCUBE(_DepthCube, actray);
 
                 // Due to the render method by cubemap, we need to find correct axis for calculating depth
                 // We get depth by judging which axis the ray is, for different face we should retarget the depth from correct axis
