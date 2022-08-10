@@ -16,7 +16,7 @@ public class RenderCubemap : MonoBehaviour {
         color_cubemap.hideFlags = HideFlags.HideAndDontSave;
         GetComponent<Camera>().nearClipPlane = 0.01f;
         GetComponent<Camera>().farClipPlane = 10.0f;
-        // GetComponent<Camera>().stereoSeparation = 0f;
+        GetComponent<Camera>().stereoSeparation = 0f;
         GetComponent<Camera>().RenderToCubemap(color_cubemap, 63, Camera.MonoOrStereoscopicEye.Left);
         GetComponent<Camera>().enabled = false;
 
